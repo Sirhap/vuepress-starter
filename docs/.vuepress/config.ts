@@ -64,16 +64,16 @@ export default defineUserConfig({
       align: "top",
       staticIcon: true
     }),
-    searchPlugin({
-      locales: {
-        '/': {
-          placeholder: 'Search',
-        },
-        '/zh/': {
-          placeholder: '搜索',
-        },
-      },
-    }),
+    // searchPlugin({
+    //   locales: {
+    //     '/': {
+    //       placeholder: 'Search',
+    //     },
+    //     '/zh/': {
+    //       placeholder: '搜索',
+    //     },
+    //   },
+    // }),
     prismjsPlugin({
       // 配置项
     }),
