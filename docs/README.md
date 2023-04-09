@@ -22,7 +22,11 @@
  1. [https://chat.binjie.site:7777/](https://chat.binjie.site:7777/)
  2. [https://geekch.art/](https://geekch.art/)
  3. [https://ai.bo-e.com/](https://ai.bo-e.com/)
- 3. [https://ai1.chagpt.fun/](https://ai1.chagpt.fun/)
+ 4. [https://ai1.chagpt.fun/](https://ai1.chagpt.fun/)
+ 5. [https://www.cleandx.xyz](https://www.cleandx.xyz)
+ 6. [ttp://www.tdchat.net](http://www.tdchat.net)
+ 7. [http://www.aichat8.club](http://www.aichat8.club)
+ 8. [https://chat.aidutu.cn/](https://chat.aidutu.cn/)
  
 ### 好用程序员的开发工具
 
