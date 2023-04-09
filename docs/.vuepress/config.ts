@@ -61,7 +61,14 @@ export default defineUserConfig({
   }),
   plugins: [
     searchPlugin({
-
+      locales: {
+        '/': {
+          placeholder: 'Search',
+        },
+        '/zh/': {
+          placeholder: '搜索',
+        },
+      },
     }),
     clipboardPlugin({
       align: "top",
