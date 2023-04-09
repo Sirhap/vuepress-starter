@@ -1,6 +1,6 @@
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import {clipboardPlugin} from "vuepress-plugin-clipboard";
-//import { searchPlugin } from '@vuepress/plugin-search'
+import { searchPlugin } from '@vuepress/plugin-search'
 
 import sidebar from "./sidebar";
 import navbar from "./navbar";
