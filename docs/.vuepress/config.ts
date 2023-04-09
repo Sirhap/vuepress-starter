@@ -60,27 +60,15 @@ export default defineUserConfig({
     lastUpdated: false
   }),
   plugins: [
+    searchPlugin({
+
+    }),
     clipboardPlugin({
       align: "top",
       staticIcon: true
     }),
-    // searchPlugin({
-    //   locales: {
-    //     '/': {
-    //       placeholder: 'Search',
-    //     },
-    //     '/zh/': {
-    //       placeholder: '搜索',
-    //     },
-    //   },
-    // }),
     prismjsPlugin({
       // 配置项
     }),
-    // palettePlugin({
-    //   // 配置项
-    //   preset: 'sass'
-    // }),
-
   ]
 });
