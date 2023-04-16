@@ -303,5 +303,28 @@ export default [
             },
         ],
     },
-
+    {
+        text: 'GPT',
+        icon: "GPT",
+        prefix: "gpt/",
+        collapsible: true,
+        children: [
+            {
+                text:'GPT3.5',
+                link:"/gpt/gpt3.5.md"
+            }
+        ]
+    },
+    {
+        text: '打赏',
+        icon: "打赏",
+        prefix: "打赏/",
+        collapsible: true,
+        children: [
+            {
+                text:'打赏',
+                link:"/打赏/打赏.md"
+            }
+        ]
+    },
 ] as SidebarConfig;

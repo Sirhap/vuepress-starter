@@ -28,9 +28,9 @@ export const themeConfig = hopeTheme({
     intro: "/about-the-author/",
     sidebarDisplay: "mobile",
     medias: {
-      Zhihu: "https://www.zhihu.com/people/javaguide",
-      Github: "https://github.com/Snailclimb",
-      Gitee: "https://gitee.com/SnailClimb",
+      Zhihu: "https://www.zhihu.com/",
+      Github: "https://github.com/",
+      Gitee: "https://gitee.com/",
     },
   },
   displayFooter: true,
