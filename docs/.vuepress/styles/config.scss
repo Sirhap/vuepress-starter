@@ -1,0 +1,36 @@
+// 定义主题颜色
+$primary-color: #007bff;
+$secondary-color: #6c757d;
+
+// 定义字体样式
+$body-font-family: 'Open Sans', sans-serif;
+$heading-font-family: 'Montserrat', sans-serif;
+$base-font-size: 16px;
+
+// 定义页面布局
+$content-width: 800px;
+$sidebar-width: 300px;
+
+// 定义导航栏样式
+$navbar-bg-color: $primary-color;
+$navbar-text-color: #fff;
+
+// 定义按钮样式
+$btn-bg-color: $primary-color;
+$btn-text-color: #fff;
+
+// 定义表格样式
+$table-bg-color: #fff;
+$table-border-color: #ccc;
+
+// 定义代码块样式
+$code-bg-color: #f8f9fa;
+$code-border-color: #ccc;
+$code-text-color: #212529;
+
+// 定义链接样式
+$link-color: $primary-color;
+
+// 定义页脚样式
+$footer-bg-color: #f8f9fa;
+$footer-text-color: #6c757d;

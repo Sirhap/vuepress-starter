@@ -1,15 +1,13 @@
 import { prismjsPlugin } from '@vuepress/plugin-prismjs'
 import {clipboardPlugin} from "vuepress-plugin-clipboard";
 import { searchPlugin } from '@vuepress/plugin-search'
-
-import sidebar from "./sidebar";
-import navbar from "./navbar";
+import { themeConfig } from "./themeConfig";
 
 import { defineUserConfig } from "vuepress";
-import { defaultTheme }  from "vuepress";
 
 export default defineUserConfig({
   title: "八股文-面试宝典",
+  theme: themeConfig,
   description: "八股文 保你通过面试",
   head: [
     [
@@ -20,6 +18,7 @@ export default defineUserConfig({
         `
     ],
     ["link", { rel: "icon", href: "/favicon.ico" }],
+    ['link', { rel: 'stylesheet', href: '/config.scss' }],
     [
       "meta",
       {
@@ -49,24 +48,23 @@ export default defineUserConfig({
       `window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-1X4BRVH78Z');`
     ]
   ],
-  theme: defaultTheme({
-    logo: "favicon.ico",
-    repo: "Sirhap/vuepress-starter",
-    sidebar,
-    navbar,
-    editLink: false,
-    smoothScroll: true,
-    contributors: false,
-    lastUpdated: false
-  }),
+  locales: {
+    "/": {
+      lang: "zh-CN",
+    },
+  },
   plugins: [
     searchPlugin({
+      // https://v2.vuepress.vuejs.org/zh/reference/plugin/search.html
+      // 排除首页
+      isSearchable: (page) => page.path !== "/",
+      maxSuggestions: 10,
+      hotKeys: ["s", "/"],
+      // 用于在页面的搜索索引中添加额外字段
+      getExtraFields: () => [],
       locales: {
-        '/': {
-          placeholder: 'Search',
-        },
-        '/zh/': {
-          placeholder: '搜索',
+        "/": {
+          placeholder: "搜索",
         },
       },
     }),
