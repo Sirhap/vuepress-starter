@@ -14,7 +14,7 @@ const navbar: NavbarConfig = [
     {
         text: 'GitHup',
         children: [
-            { text: 'GitHup', link: '/GitHup/入门项目/base.md' }
+            { text: 'GitHub', link: '/GitHub/入门项目/base.md' }
         ]
     },
     {
