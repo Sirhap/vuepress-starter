@@ -312,6 +312,10 @@ export default [
             {
                 text:'GPT3.5',
                 link:"/gpt/gpt3.5.md"
+            },
+            {
+                text:'AgentGPT',
+                link:"/gpt/agentGpt.md"
             }
         ]
     },
