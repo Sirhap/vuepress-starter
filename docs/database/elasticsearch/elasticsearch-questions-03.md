@@ -76,7 +76,7 @@ Elasticsearch会自动将索引数据平摊到多个分片上,每个分片可以
 所以，Lucene 的倒排索引，在上面的表格的基础上，在左边增加了一层字典树 term index，它不存储所有的单词，只存储单词前缀，通过字典书找到单词所在的块，也就是单词的大概位置，再在块里二分查找，找到对应的单词，再找到单词对应的文档列表。
 
 
-![es倒排索引.jpg](..%2F..%2F.vuepress%2Fpublic%2Fes%B5%B9%C5%C5%CB%F7%D2%FD.jpg)
+[//]: # (![es倒排索引.jpg]&#40;..%2F..%2F.vuepress%2Fpublic%2Fes%B5%B9%C5%C5%CB%F7%D2%FD.jpg&#41;)
     term index 使用字典树(trie树)来加速term查找,节省内存，只记录term的前缀。
     遍历字典树可以快速找到term所在的block位置。
     再在对应的block内进行二分查找定位具体term。    
