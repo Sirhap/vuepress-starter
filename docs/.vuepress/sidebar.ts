@@ -304,30 +304,30 @@ export default [
         ],
     },
     {
-        text: 'GPT',
-        icon: "GPT",
-        prefix: "gpt/",
+        text: '个人其他网址',
+        icon: "otherWeb",
+        prefix: "otherWeb/",
         collapsible: true,
         children: [
             {
-                text:'GPT3.5',
-                link:"/gpt/gpt3.5.md"
+                text:'图片集',
+                link:"/otherWeb/图片集.md"
             },
             {
-                text:'AgentGPT',
-                link:"/gpt/agentGpt.md"
+                text:'万联简介',
+                link:"/otherWeb/万联简介.md"
             }
         ]
     },
     {
-        text: '打赏',
-        icon: "打赏",
-        prefix: "打赏/",
+        text: '个人公众号',
+        icon: "officialAccounts",
+        prefix: "officialAccounts/",
         collapsible: true,
         children: [
             {
-                text:'打赏',
-                link:"/打赏/打赏.md"
+                text:'公众号',
+                link:"/officialAccounts/WeChat.md"
             }
         ]
     },

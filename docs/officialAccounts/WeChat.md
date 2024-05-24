@@ -1,11 +1,8 @@
   <div class="donate-page">
     <h1>感谢您的支持！</h1>
     <div class="donate-options">
-      <div class="donate-option">
-        <img src="/支付宝.jpg" alt="支付宝二维码" width="500" height="700" />
-        <div class="donate-text">支付宝</div>
-      </div>
-    </div>
+      <p>微信搜索个人公众号  <img src="/熊猫头.jpg" alt="《技术搬砖》" width="100" height="100" /></p><br />
+</div>
   </div>
 
 <script>
