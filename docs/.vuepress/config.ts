@@ -1,12 +1,10 @@
-import { prismjsPlugin } from '@vuepress/plugin-prismjs'
-import {clipboardPlugin} from "vuepress-plugin-clipboard";
-import { searchPlugin } from '@vuepress/plugin-search'
-import { themeConfig } from "./themeConfig";
-
+import { themeConfig } from "./themeConfig.js";
 import { defineUserConfig } from "vuepress";
+import { viteBundler } from "@vuepress/bundler-vite";
 
 export default defineUserConfig({
-  title: "八股文-面试宝典",
+  bundler: viteBundler(),
+  title: "",
   theme: themeConfig,
   description: "八股文 保你通过面试",
   head: [
@@ -52,28 +50,5 @@ export default defineUserConfig({
     "/": {
       lang: "zh-CN",
     },
-  },
-  plugins: [
-    searchPlugin({
-      // https://v2.vuepress.vuejs.org/zh/reference/plugin/search.html
-      // 排除首页
-      isSearchable: (page) => page.path !== "/",
-      maxSuggestions: 10,
-      hotKeys: ["s", "/"],
-      // 用于在页面的搜索索引中添加额外字段
-      getExtraFields: () => [],
-      locales: {
-        "/": {
-          placeholder: "搜索",
-        },
-      },
-    }),
-    clipboardPlugin({
-      align: "top",
-      staticIcon: true
-    }),
-    prismjsPlugin({
-      // 配置项
-    }),
-  ]
+  }
 });

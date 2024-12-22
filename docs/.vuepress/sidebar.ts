@@ -1,10 +1,10 @@
-import {SidebarConfig} from "@vuepress/theme-default/lib/shared/nav";
-import {LinkIcon} from "vuepress-theme-hope/lib/client/modules/blog/components/icons";
+import { SidebarOptions } from "vuepress-theme-hope";
 
 export default [
     {
-        text: '八股文网址介绍',
+        text: '导航',
         link: '/',
+        collapsible: true,
     },
     {
         text: "java",
@@ -91,8 +91,13 @@ export default [
                     {  text:" 线程池（Thread Pool）",  link: "/java/Java热门面试题/线程池(Thread Pool).md"},
                     {  text:" 输入输出流（Input Output Stream）",  link: "/java/Java热门面试题/输入输出流(Input Output Stream).md"},
                     {  text:" 锁（Lock）",  link: "/java/Java热门面试题/锁(Lock).md"},
-                    {  text:" 高并发（High Concurrency）",  link: "/java/Java热门面试题/高并发(High Concurrency).md"}        ],
-            },
+                    {  text:" 高并发（High Concurrency）",  link: "/java/Java热门面试题/高并发(High Concurrency).md"} ,      
+                    {
+                        text: "Spring Boot 全家桶",
+                        link: "/java/Java热门面试题/SpringBoot全家桶.html",
+                    }
+                    ],
+                },
             {
                 text: "基础",
                 prefix: "basis/",
@@ -304,18 +309,18 @@ export default [
         ],
     },
     {
-        text: '个人其他网址',
+        text: 'AI网址',
         icon: "otherWeb",
-        prefix: "otherWeb/",
+        prefix: "other/AI 助手导航/",
         collapsible: true,
         children: [
             {
-                text:'图片集',
-                link:"/otherWeb/图片集.md"
+                text: 'AI助手推荐',
+                link: "/other/其他网址/AI 助手导航.md"
             },
             {
-                text:'万联简介',
-                link:"/otherWeb/万联简介.md"
+                text: 'AI编程工具',
+                link: "/other/其他网址/AI编程工具.md"
             }
         ]
     },
@@ -331,4 +336,4 @@ export default [
             }
         ]
     },
-] as SidebarConfig;
+] as SidebarOptions;

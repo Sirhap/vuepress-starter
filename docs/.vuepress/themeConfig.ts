@@ -1,6 +1,6 @@
 import { hopeTheme } from "vuepress-theme-hope";
-import sidebar from "./sidebar";
-import navbar from "./navbar";
+import sidebar from "./sidebar.js";
+import navbar from "./navbar.js";
 
 
 export const themeConfig = hopeTheme({
@@ -39,11 +39,18 @@ export const themeConfig = hopeTheme({
     copyright: true,
     mdEnhance: {
       codetabs: true,
-      container: true,
       tasklist: true,
     },
-    // feed: {
-    //   json: true,
-    // },
+    search: {
+      isSearchable: (page) => page.path !== "/",
+      maxSuggestions: 10,
+      hotKeys: ["s", "/"],
+      locales: {
+        "/": {
+          placeholder: "搜索",
+        },
+      },
+    },
+    copyCode: true,
   },
 });

@@ -1,36 +1,154 @@
-// 定义主题颜色
-$primary-color: #007bff;
+// 主题色彩定义
+$theme-color: #3eaf7c;
+$primary-color: #3eaf7c;
 $secondary-color: #6c757d;
 
-// 定义字体样式
-$body-font-family: 'Open Sans', sans-serif;
-$heading-font-family: 'Montserrat', sans-serif;
+// 字体设置
+$body-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$heading-font-family: $body-font-family;
 $base-font-size: 16px;
+$line-height: 1.7;
 
-// 定义页面布局
-$content-width: 800px;
-$sidebar-width: 300px;
+// 布局设置
+$content-width: 900px;
+$sidebar-width: 280px;
 
-// 定义导航栏样式
-$navbar-bg-color: $primary-color;
-$navbar-text-color: #fff;
+// 导航栏美化
+.navbar {
+  backdrop-filter: saturate(180%) blur(5px);
+  background: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
 
-// 定义按钮样式
-$btn-bg-color: $primary-color;
-$btn-text-color: #fff;
+// 侧边栏美化
+.vp-sidebar {
+  background: #f8f9fa;
+  border-right: 1px solid #eaecef;
+  
+  .vp-sidebar-link {
+    padding: 0.35rem 1rem 0.35rem 1.25rem;
+    border-left: 0.25rem solid transparent;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background-color: rgba(62, 175, 124, 0.1);
+      border-left-color: $theme-color;
+    }
+    
+    &.active {
+      background-color: rgba(62, 175, 124, 0.1);
+      border-left-color: $theme-color;
+      color: $theme-color;
+    }
+  }
+}
 
-// 定义表格样式
-$table-bg-color: #fff;
-$table-border-color: #ccc;
+// 内容区域美化
+.theme-container {
+  .page {
+    padding: 2rem;
+    
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+    
+    h1 {
+      font-size: 2.2rem;
+      border-bottom: 1px solid #eaecef;
+      padding-bottom: 0.3rem;
+    }
+  }
+}
 
-// 定义代码块样式
-$code-bg-color: #f8f9fa;
-$code-border-color: #ccc;
-$code-text-color: #212529;
+// 代码块美化
+div[class*='language-'] {
+  border-radius: 6px;
+  margin: 0.85rem 0;
+  
+  pre, pre[class*='language-'] {
+    padding: 1.25rem 1.5rem;
+    margin: 0;
+    background: #282c34;
+    border-radius: 6px;
+    overflow: auto;
+  }
+}
 
-// 定义链接样式
-$link-color: $primary-color;
+// 按钮样式
+.custom-button {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: $theme-color;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background-color: darken($theme-color, 10%);
+  }
+}
 
-// 定义页脚样式
-$footer-bg-color: #f8f9fa;
-$footer-text-color: #6c757d;
+// 表格美化
+table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  display: block;
+  overflow-x: auto;
+  
+  tr {
+    border-top: 1px solid #dfe2e5;
+    
+    &:nth-child(2n) {
+      background-color: #f6f8fa;
+    }
+  }
+  
+  th, td {
+    border: 1px solid #dfe2e5;
+    padding: 0.6em 1em;
+  }
+}
+
+// 链接样式
+a {
+  color: $theme-color;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: darken($theme-color, 10%);
+  }
+}
+
+// 页脚样式
+.footer {
+  padding: 2.5rem;
+  border-top: 1px solid #eaecef;
+  text-align: center;
+  color: #4e6e8e;
+  background-color: #f8f9fa;
+}
+
+// 滚动条美化
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+  
+  &:hover {
+    background: #a8a8a8;
+  }
+}

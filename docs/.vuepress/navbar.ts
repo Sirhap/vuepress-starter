@@ -1,9 +1,12 @@
-import { NavbarConfig } from '@vuepress/theme-default'
+import { NavbarOptions } from "vuepress-theme-hope";
 
-const navbar: NavbarConfig = [
+const navbar: NavbarOptions = [
     {
         text: '首页',
         link: '/'
+    },{
+        text: '文章',
+        link: '/article/'
     },
     {
         text: 'Java',
@@ -20,7 +23,6 @@ const navbar: NavbarConfig = [
     {
         text: '其他',
         children: [
-            { text: '其他网址', link: '/other/其他网址/其他网址.md' },
             { text: '笑话', link: '/other/笑话/梗.md' },
         ]
     },

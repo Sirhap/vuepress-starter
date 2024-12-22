@@ -5,51 +5,117 @@ tag:
   - Redis
 ---
 
-**Redis 集群** 相关的面试题为我的[知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)（点击链接即可查看详细介绍以及加入方法）专属内容，已经整理到了[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html)中。
+# Redis 集群详解
 
-![](https://oss.javaguide.cn/github/javaguide/database/redis/redis-cluster-javamianshizhibei.png)
+## 1. Redis 集群简介
 
+Redis Cluster 是 Redis 提供的分布式数据库方案，支持数据自动分片和高可用性。主要特点包括：
 
-[《Java 面试指北》](https://javaguide.cn/zhuanlan/java-mian-shi-zhi-bei.html)（点击链接即可查看详细介绍）的部分内容展示如下，你可以将其看作是 [JavaGuide](https://javaguide.cn) 的补充完善，两者可以配合使用。
+- 数据自动分片，分布在多个节点上
+- 去中心化的分布式架构
+- 支持自动故障转移
+- 提供较好的可扩展性和高可用性
 
-![](https://oss.javaguide.cn/xingqiu/image-20220304102536445.png)
+## 2. Redis 集群架构
 
-最近几年，市面上有越来越多的“技术大佬”开始办培训班/训练营，动辄成千上万的学费，却并没有什么干货，单纯的就是割韭菜。
+### 2.1 节点通信
+- 使用 Gossip 协议进行节点间通信
+- 通过 16384 个槽位进行数据分片
+- 客户端可以与任意节点通信
 
-为了帮助更多同学准备 Java 面试以及学习 Java ，我创建了一个纯粹的知识星球。虽然收费只有培训班/训练营的百分之一，但是知识星球里的内容质量更高，提供的服务也更全面。
+### 2.2 分片机制
+- 所有键值对根据 key 被分配到 16384 个槽位中
+- 每个主节点负责一部分槽位
+- 从节点复制主节点的数据，提供故障转移支持
 
-欢迎准备 Java 面试以及学习 Java 的同学加入我的[知识星球](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)，干货非常多，学习氛围也很不错！收费虽然是白菜价，但星球里的内容或许比你参加上万的培训班质量还要高。
+## 3. 集群搭建
 
-<div align="center">
-  <a href="https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html">
-    <img src="https://oss.javaguide.cn/xingqiu/image-20220311203414600.png" style="margin: 0 auto; " />
-  </a>
-</div>
+### 3.1 基础配置
+```bash
+# redis.conf 配置示例
+port 6379
+cluster-enabled yes
+cluster-config-file nodes-6379.conf
+cluster-node-timeout 15000
+appendonly yes
+```
 
-下面是星球提供的部分服务（点击下方图片即可获取知识星球的详细介绍）：
+### 3.2 创建集群
+```bash
+# 创建包含 3 主 3 从的集群
+redis-cli --cluster create 127.0.0.1:6379 127.0.0.1:6380 127.0.0.1:6381 \
+127.0.0.1:6382 127.0.0.1:6383 127.0.0.1:6384 \
+--cluster-replicas 1
+```
 
-<div align="center">
-  <a href="https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html">
-    <img src="https://oss.javaguide.cn/xingqiu/xingqiufuwu.png" style="margin: 0 auto; " />
-  </a>
-</div>
+## 4. 集群原理
 
-**我有自己的原则，不割韭菜，用心做内容，真心希望帮助到你！**
+### 4.1 数据分片
+- 使用 CRC16 算法计算 key 的哈希值
+- 将哈希值对 16384 取模得到槽位
+- 根据槽位确定数据存储的节点
 
-如果你感兴趣的话，不妨花 3 分钟左右看看星球的详细介绍： [JavaGuide 知识星球详细介绍](https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html)。
+### 4.2 故障转移流程
+1. 节点心跳检测
+2. 主观下线（Subjectively Down）
+3. 客观下线（Objectively Down）
+4. 从节点选举
+5. 故障转移执行
 
-这里再送一个 30 元的新人优惠券（续费半价）。
+## 5. 集群运维
 
-<div align="center">
-  <a href="https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html">
-    <img src="https://oss.javaguide.cn/xingqiu/xingqiuyouhuijuanheyi.png" style="margin: 0 auto; " />
-  </a>
-</div>
+### 5.1 常用命令
+```bash
+# 查看集群信息
+redis-cli cluster info
 
-进入星球之后，记得添加微信，我会发你详细的星球使用指南。
+# 查看节点信息
+redis-cli cluster nodes
 
-<div align="center">
-  <a href="https://javaguide.cn/about-the-author/zhishixingqiu-two-years.html">
-    <img src="https://oss.javaguide.cn/github/javaguide/IMG_3007.jpg" style="margin: 0 auto; " />
-  </a>
-</div>
+# 检查集群健康状态
+redis-cli --cluster check host:port
+```
+
+### 5.2 扩容缩容
+```bash
+# 添加节点
+redis-cli --cluster add-node new_host:new_port existing_host:existing_port
+
+# 删除节点
+redis-cli --cluster del-node host:port node_id
+```
+
+## 6. 注意事项
+
+### 6.1 数据一致性
+- Redis 集群不保证强一致性
+- 在网络分区等特殊情况下可能丢失写入
+- 默认采用异步复制机制
+
+### 6.2 使用限制
+- 不支持多键操作（除非所有键在同一个槽位）
+- 不支持跨节点的事务操作
+- 单个键值对的数据不能超过 512MB
+
+## 7. 最佳实践
+
+### 7.1 架构设计
+- 至少部署 3 个主节点
+- 每个主节点配置一个从节点
+- 考虑跨机房部署提高可用性
+
+### 7.2 性能优化
+- 使用连接池
+- 合理设置超时时间
+- 避免大键值对
+- 使用批量操作减少网络往返
+
+### 7.3 运维建议
+- 定期备份数据
+- 监控关键指标
+- 制定应急预案
+- 定期进行容灾演练
+
+## 参考资料
+1. [Redis 官方文档](https://redis.io/topics/cluster-tutorial)
+2. [Redis 集群规范](https://redis.io/topics/cluster-spec)
